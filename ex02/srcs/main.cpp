@@ -6,32 +6,35 @@
 /*   By: nbardavi <nbabardavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 09:57:35 by nbardavi          #+#    #+#             */
-/*   Updated: 2024/05/30 11:24:12 by nbardavi         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:51:43 by nbardavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/colors.h"
-#include "../include/Span.Class.hpp"
-#include <cctype>
-#include <vector>
+#include "../include/MutantStack.Class.hpp"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 
 int main() {
-    Span sp = Span(10000);
+    MutantStack<int> mstack;
 
-    std::srand(static_cast<unsigned int>(std::time(0)));
-    for (int i = 0; i < 10000; ++i) {
-        sp.addNumber(std::rand() % 100000);
+    mstack.push(5);
+    mstack.push(17);
+
+    std::cout << "Top element: " << mstack.top() << std::endl;
+    mstack.pop();
+    std::cout << "Size: " << mstack.size() << std::endl;
+
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+    mstack.push(0);
+	std::cout << "======" << std::endl;
+    for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it) {
+        std::cout << *it << std::endl;
     }
-    std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
-    std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
-	try{
-		sp.addNumber(2);
-	}
-	catch (std::exception){
-		std::cout << "out of range" << std::endl;
-	}
-    return 0;
+	std::cout << "======" << std::endl;
+    for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
+        std::cout << *rit << std::endl;
+    }
+	return 0;
 }

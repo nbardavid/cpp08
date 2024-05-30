@@ -6,7 +6,7 @@
 /*   By: nbardavi <nbabardavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:09:01 by nbardavi          #+#    #+#             */
-/*   Updated: 2024/05/06 14:59:37 by nbardavi         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:11:26 by nbardavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,13 @@ public:
 	~Span();
 	void addNumber(int nbr);
 	Span&	operator=(const Span& other);
-	unsigned int getNbr() const;
+	unsigned int getN() const;
+	int longestSpan();
+	int shortestSpan();
+	void sort();
 private:
-	unsigned int _nbr;
-	std::vector<int> _tab;
+	unsigned int _n;
+	std::vector<int> _numbers;
 };
-
-Span::Span():_nbr(0){}
-
-Span::Span(unsigned int N):_nbr(N){}
-
-Span::Span(const Span& other):_nbr(other.getNbr()){
-	
-}
-
-Span& Span::operator=(const Span& other){
-	if (this != &other){
-		this->_nbr = other.getNbr();
-		this->;
-	}
-	return *this;
-}
-
-Span::~Span(){}
-
-unsigned int Span::getNbr () const{return this->_nbr;}
 
 #endif
