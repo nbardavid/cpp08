@@ -6,7 +6,7 @@
 /*   By: nbardavi <nbabardavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 09:57:35 by nbardavi          #+#    #+#             */
-/*   Updated: 2024/05/06 11:04:39 by nbardavi         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:40:31 by nbardavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main() {
     intTab.push_back(9);
 
     try {
-        std::vector<int>::const_iterator intIt = easyfind(intTab, 5);
+        std::vector<int>::const_iterator intIt = easyfind(intTab, 1);
         std::cout << GREEN << "Found: " << *intIt << RESET << std::endl;
 		easyfind(intTab, 10);
     } catch (const std::out_of_range& e) {

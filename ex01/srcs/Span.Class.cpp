@@ -6,7 +6,7 @@
 /*   By: nbardavi <nbabardavid@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:09:05 by nbardavi          #+#    #+#             */
-/*   Updated: 2024/05/30 11:36:01 by nbardavi         ###   ########.fr       */
+/*   Updated: 2024/06/05 11:17:16 by nbardavi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,16 @@ void Span::addNumber( int nbr ){
 	}
 }
 
-void Span::sort(){
-	if (_numbers.size() == 0){
-		throw std::exception();
-	}
-	int temp;
-	for (std::size_t i = 0; i < _numbers.size(); i++){
-		for (std::size_t j = i; j < _numbers.size(); j++){
-			if (_numbers[j] < _numbers[i]){
-				temp = _numbers[i];
-				_numbers[i] = _numbers[j];
-				_numbers[j] = temp;
-			}
+void Span::addNumber(size_t n, time_t seed){
+    std::srand(static_cast<unsigned int>(seed));
+
+    for (size_t i = 0; i < n; ++i) {
+        int random_number = std::rand() % 100000 + 1;
+		if (this->getN() == _numbers.size()){
+			throw std::exception();
 		}
-	}
+        _numbers.push_back(random_number);
+    }
 }
 
 int Span::longestSpan(){
@@ -64,7 +60,7 @@ int Span::longestSpan(){
 		return 0;
 	}
 		
-	this->sort();
+	std::sort(_numbers.begin(), _numbers.end());
 	return (_numbers[_numbers.size() - 1] - _numbers[0]);
 }
 
@@ -75,7 +71,8 @@ int Span::shortestSpan(){
 		return 0;
 	}
 	
-	this->sort();
+	std::sort(_numbers.begin(), _numbers.end());
+	// this->sort();
 	int min = _numbers[_numbers.size() - 1] - _numbers[0];
 	
 	for (std::size_t i = 1; i < _numbers.size(); i++){
